@@ -1,0 +1,26 @@
+---
+title: The Contract UI is coming.
+author: michael-rice
+createdAt: 2024-1-31
+heroImage: https://res.cloudinary.com/dmffaoohj/image/upload/v1682374462/changelog_ucfwxg.png
+---
+
+This is DotBot SaaS Boilerplate's first Roadmap entry and what better feature to introduce than the Roadmap itself!
+Over the last couple of weeks, we've quietly introduced a MDX rendering engine that's now powering our [blog](/blog), [docs](/docs), and now this Roadmap.
+
+One of the most jarring experiences in many websites is when you're switching between multiple providers for a blog, roadmap, and documentation. Each provider has its own style and uses a different datastore which leads to obvious issues with data quality and aesthetics.
+With DotBot SaaS Boilerplate, you'll be able to write all three of these sites in MDX in the same repo as your codebase.
+
+To add a new Roadmap entry, create a file in `/content/roadmap/`, with the format `date-your-title.mdx`
+
+The first few lines of this MDX file is some self explanatory metadata and the rest of the file is regular MDX.
+
+```mdx
+---
+Daily updates here.
+---
+
+This is updates for ContractBot on $DATE
+```
+
+Note that the `author` field refers to an mdx file in `content/authors`. The same authors can write both blog posts and Roadmap entries.
