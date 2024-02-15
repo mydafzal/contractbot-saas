@@ -9,15 +9,21 @@ import Head from "../Head";
 import type { LucideIcon } from "lucide-react";
 import { Scale } from "lucide-react";
 import { ArrowRight } from "lucide-react";
-import { FileLock, Check, X, BrainCircuit, Rabbit, Asterisk, Brain } from "lucide-react";
+import {
+  FileLock,
+  Check,
+  X,
+  BrainCircuit,
+  Rabbit,
+  Asterisk,
+  Brain,
+} from "lucide-react";
 import type { Price } from "@prisma/client";
 import { PricingPlanInterval } from "@prisma/client";
 import { Tabs, TabsList, TabsTrigger } from "@/components/design-system/Tabs";
 import { Button } from "@/components/design-system/Button";
 import { Section } from "../Section";
 import Link from "next/link";
-
-
 
 const PRODUCTS = [
   {
@@ -54,7 +60,6 @@ const PRODUCTS = [
   },
 ];
 
-
 export const SectionTitle: React.FC<{ title: string }> = ({ title }) => {
   return (
     <h2 className="mb-4 text-center text-3xl font-bold md:text-4xl lg:text-4xl">
@@ -85,7 +90,7 @@ export const Hero = () => {
         ease: [0, 0.71, 0.2, 1.01],
       }}
     >
-      <Link href="https://chat.contractbot.ai">
+      <Link href="https://contract-bot.vercel.app/">
         <div className="mx-auto mb-8 flex w-fit items-center rounded-lg border bg-gray-100 p-2 pr-1 ring-0 ring-gray-200 transition-[ring] hover:ring-4">
           <span className="rounded-md bg-gray-300 px-2 py-[4px] text-xs font-semibold">
             ContractBot Chat
@@ -100,16 +105,18 @@ export const Hero = () => {
           </div>
         </div>
       </Link>
-      <h1 className="mb-5 text-4xl font-extrabold md:text-5xl">Your AI-powered legal assistant.</h1>
+      <h1 className="mb-5 text-4xl font-extrabold md:text-5xl">
+        Your AI-powered legal assistant.
+      </h1>
       <h3 className="mb-8 flex flex-wrap items-center justify-center space-x-3 font-light text-gray-500 md:text-xl">
-        ContractBot simplifies writing contracts and agreements. It's like having a lawyer in your pocket.
+        ContractBot simplifies writing contracts and agreements. It's like
+        having a lawyer in your pocket.
       </h3>
       <div className="mb-8 flex flex-col items-center space-y-4">
         <CTAButton />
-        
       </div>
-      
-      <div className="mx-auto max-w-8xl">
+
+      <div className="max-w-8xl mx-auto">
         <video
           src="https://storage.googleapis.com/contractbot-web-assets/Comp%2017.mp4"
           autoPlay
@@ -118,7 +125,6 @@ export const Hero = () => {
           className="h-auto w-full"
         />
       </div>
-
     </motion.div>
   );
 };
@@ -126,15 +132,18 @@ export const Hero = () => {
 const FAQ_ITEMS = [
   {
     question: "Does ContractBot use ChatGPT or any of OpenAI's models?",
-    answer: "No. ContractBot uses a proprietary model trained on a dataset of over 1 million legal documents and counting. We have worked hard to develop our own internal models to ensure that we can provide the best possible service to our users.",
+    answer:
+      "No. ContractBot uses a proprietary model trained on a dataset of over 1 million legal documents and counting. We have worked hard to develop our own internal models to ensure that we can provide the best possible service to our users.",
   },
   {
     question: "Will ContractBot have an API or a developer platform?",
-    answer: "Yes, we are currently working on an API and developer platform. If you are interested in being an early adopter, please contact us at developers@contractbot.ai",
+    answer:
+      "Yes, we are currently working on an API and developer platform. If you are interested in being an early adopter, please contact us at developers@contractbot.ai",
   },
   {
     question: "Do users already have early access to ContractBot?",
-    answer: "Yes, we are currently in the process of onboarding our first users. If you are interested in being an early adopter, please contact us at early@contractbot.ai",
+    answer:
+      "Yes, we are currently in the process of onboarding our first users. If you are interested in being an early adopter, please contact us at early@contractbot.ai",
   },
 ];
 
@@ -207,10 +216,7 @@ export const FeatureCard: React.FC<{
 };
 
 const PRICING_FEATURE_LIST: Record<string, string[]> = {
-  Basic: [
-    "Free Access To ContractBot Chat",
-    "Generate 5 monthly contracts",
-  ],
+  Basic: ["Free Access To ContractBot Chat", "Generate 5 monthly contracts"],
   Pro: [
     "Unlimited ContractBot chat queries",
     "100 generated contracts per-month",
