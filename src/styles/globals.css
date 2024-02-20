@@ -19,3 +19,7 @@ body,
 #__next {
   height: 100%;
 }
+
+li {
+  color: rgb(115 115 115 / var(--tw-text-opacity));
+}
