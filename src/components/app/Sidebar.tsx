@@ -8,7 +8,7 @@ import {
 } from "@/components/design-system/Collapsible";
 import type { LucideIcon } from "lucide-react";
 import { ChevronDown } from "lucide-react";
-import { Home, ListChecks, Settings } from "lucide-react";
+import { Home, Settings, Bot } from "lucide-react";
 import { useRouter } from "next/router";
 import { useTeam } from "@/lib/useTeam";
 import { Button } from "../design-system/Button";
@@ -17,7 +17,6 @@ import Link from "next/link";
 import type { UrlObject } from "url";
 import Separator from "../design-system/Separator";
 import { useState } from "react";
-import { SETUP_STEPS } from "./Setup";
 
 interface Step {
   id: string;
@@ -151,6 +150,11 @@ export default function Sidebar() {
               />
             </CollapsibleContent>
           </Collapsible>
+          <Link
+            href={{ pathname: "/[team]/chat", query: { team: team?.slug } }}
+          >
+            <Option title="Chat" icon={Bot} pathname="/[team]/chat" />
+          </Link>
         </div>
       </div>
       <Separator className="m-4" />
