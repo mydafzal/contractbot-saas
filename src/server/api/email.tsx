@@ -13,7 +13,11 @@ const transporter = nodemailer.createTransport({
     user: env.EMAIL_SMTP_USER,
     pass: env.EMAIL_SMTP_PASSWORD,
   },
-  secure: false,
+  secure: true,
+  tls: {
+    // do not fail on invalid certs
+    rejectUnauthorized: false,
+  },
 });
 
 if (
