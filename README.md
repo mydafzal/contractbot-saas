@@ -1,4 +1,4 @@
-# ContractBot Web-Based SaaS Platformm
+# ContractBot Web-Based SaaS Platform
 
 ## Stack
 
