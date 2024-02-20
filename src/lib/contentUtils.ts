@@ -1,8 +1,15 @@
+import { customAlphabet } from "nanoid";
+
 export const sluggifyTitle = (title: string) => {
   const re = /[^\w\s]/g;
 
   return title.trim().toLowerCase().replace(re, "").replace(/\s+/g, "-");
 };
+
+export const nanoid = customAlphabet(
+  "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+  7
+); // 7-character random string
 
 export const getNodeText = (node: React.ReactNode): string => {
   if (typeof node === "string") return node;
