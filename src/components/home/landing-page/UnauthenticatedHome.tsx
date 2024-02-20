@@ -90,7 +90,7 @@ export const Hero = () => {
         ease: [0, 0.71, 0.2, 1.01],
       }}
     >
-      <Link href="https://contract-bot.vercel.app/">
+      <Link href="#">
         <div className="mx-auto mb-8 flex w-fit items-center rounded-lg border bg-gray-100 p-2 pr-1 ring-0 ring-gray-200 transition-[ring] hover:ring-4">
           <span className="rounded-md bg-gray-300 px-2 py-[4px] text-xs font-semibold">
             ContractBot Chat
