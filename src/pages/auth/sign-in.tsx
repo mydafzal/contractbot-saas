@@ -117,7 +117,9 @@ export default function SignInPage({
       <div className="mx-auto flex w-full max-w-sm flex-col items-center space-y-4 px-4">
         <Logo className="" variant="logo" />
         <h1 className="text-3xl font-semibold">ContractBot</h1>
-        <p className="text-lg text-gray-500">Access your account or get early access.</p>
+        <p className="text-lg text-gray-500">
+          Access your account or get early access.
+        </p>
         <form
           className="flex w-full flex-col space-y-4"
           onSubmit={handleSignInWithEmail}
@@ -155,7 +157,7 @@ export default function SignInPage({
             <span>Continue with Google</span>
           </Button>
         )}
-        {providers?.credentials && (
+        {/* {providers?.credentials && (
           <Button
             variant="outline"
             className="flex w-full items-center justify-center gap-x-2 rounded-lg bg-white py-2"
@@ -164,7 +166,7 @@ export default function SignInPage({
           >
             <span>Continue with temporary account</span>
           </Button>
-        )}
+        )} */}
       </div>
     </div>
   );
