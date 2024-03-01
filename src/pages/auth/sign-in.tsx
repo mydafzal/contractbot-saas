@@ -157,7 +157,7 @@ export default function SignInPage({
             <span>Continue with Google</span>
           </Button>
         )}
-        {/* {providers?.credentials && (
+        {providers?.credentials && (
           <Button
             variant="outline"
             className="flex w-full items-center justify-center gap-x-2 rounded-lg bg-white py-2"
@@ -166,7 +166,7 @@ export default function SignInPage({
           >
             <span>Continue with temporary account</span>
           </Button>
-        )} */}
+        )}
       </div>
     </div>
   );
