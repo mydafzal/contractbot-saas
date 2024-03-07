@@ -11,6 +11,8 @@ interface JsonInterface {
   id: string;
   previewToken: string | null;
 }
+// Initialize the global context array
+let globalContext: any[] = [];
 
 export default async function handler(
   req: NextApiRequest,
@@ -18,12 +20,15 @@ export default async function handler(
 ) {
   try {
     const json = req.body as JsonInterface;
-
+    // Get the latest message from the array
+    const message = json.messages.slice(-1)[0];
+    console.log("context", globalContext);
     const response = await axios.post(
-      "https://say.helloadam.ai:3050/api/generate",
+      "https://say.helloadam.ai:8888/api/generate",
       {
         model: "contractbot",
-        prompt: json?.messages[0]?.content,
+        prompt: message?.content,
+        context: globalContext,
         stream: true,
       },
       {
@@ -38,8 +43,10 @@ export default async function handler(
     rl.on("line", (line: string) => {
       // Parse the JSON object and extract the "response" value
       const parsedJson = JSON.parse(line);
+      if (parsedJson.context) {
+        globalContext = parsedJson.context;
+      }
       const responseText = parsedJson.response;
-      // Send the "response" value as the response
       res.write(responseText);
     });
 

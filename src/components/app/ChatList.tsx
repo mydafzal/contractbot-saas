@@ -17,7 +17,7 @@ export function ChatList({ messages }: ChatList) {
           key={index}
           className={
             message.role === "user"
-              ? "mb-4 rounded-2xl bg-gradient-to-r from-indigo-400 to-indigo-500 md:ml-[40%]"
+              ? "mb-4 rounded-2xl bg-gradient-to-r from-indigo-400 to-indigo-500 md:ml-[50%]"
               : "mb-4 rounded-2xl bg-gray-100 md:mr-[30%]"
           }
         >
