@@ -22,7 +22,6 @@ export default async function handler(
     const json = req.body as JsonInterface;
     // Get the latest message from the array
     const message = json.messages.slice(-1)[0];
-    console.log("context", globalContext);
     const response = await axios.post(
       "https://say.helloadam.ai:8888/api/generate",
       {
