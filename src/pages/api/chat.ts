@@ -1,6 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 import * as readline from "readline";
+import { getServerAuthSession } from "@/server/auth";
+import rateLimitMiddleware from "@/utils/rateLimiter";
 
 interface Message {
   role: string;
@@ -11,19 +13,22 @@ interface JsonInterface {
   id: string;
   previewToken: string | null;
 }
-// Initialize the global context array
-let globalContext: any[] = [];
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+// Initialize the global context array
+let globalContext: number[] = [];
+
+export async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
+    // check if the user is authorize
+    const session = await getServerAuthSession({ req, res });
+    if (!session) {
+      return res.status(401).send("Unauthorized");
+    }
     const json = req.body as JsonInterface;
     // Get the latest message from the array
     const message = json.messages.slice(-1)[0];
     const response = await axios.post(
-      "https://say.helloadam.ai:8888/api/generate",
+      "https://mjrvgq2i4kz4oj-11434.proxy.runpod.net/api/generate",
       {
         model: "contractbot",
         prompt: message?.content,
@@ -57,3 +62,5 @@ export default async function handler(
     return res.status(500).send("Internal Server Error");
   }
 }
+
+export default rateLimitMiddleware(handler);

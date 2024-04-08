@@ -112,7 +112,7 @@ export default function Sidebar() {
       <div className="flex h-full flex-col space-y-6 px-4">
         <Logo variant="wordmark" className="my-12" />
         <TeamSelector />
-        <div className="flex cursor-pointer flex-col">
+        <div className="flex flex-col">
           <Link href={{ pathname: "/[team]/", query: { team: team?.slug } }}>
             <Option title="Home" icon={Home} pathname="/[team]" />
           </Link>
