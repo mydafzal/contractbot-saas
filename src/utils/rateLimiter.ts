@@ -7,7 +7,7 @@ export default function rateLimitMiddleware(
 ) {
   return (req: NextApiRequest, res: NextApiResponse) => {
     const ip = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
-    const limit = 2; // Limiting requests to 20 per 3 hours per IP
+    const limit = 20; // Limiting requests to 20 per 3 hours per IP
     const windowMs = 3 * 60 * 60 * 1000; // 3 hours in milliseconds
 
     if (!rateLimitMap.has(ip)) {

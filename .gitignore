@@ -22,7 +22,6 @@
 # misc
 .DS_Store
 *.pem
-.vscode
 
 # debug
 npm-debug.log*
@@ -48,3 +47,4 @@ next-env.d.ts
 
 # contentlayer
 .contentlayer
+config.bat
