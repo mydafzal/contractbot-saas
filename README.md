@@ -1,66 +1,75 @@
-# ContractBot Web-Based SaaS Platform
+# ContractBot SaaS
 
-## Stack
+ContractBot SaaS is a full-stack contract workflow platform built with Next.js, Prisma, typed APIs, authentication, email flows, billing integrations, and documentation content.
 
-**Frontend framework**: Next.js
+The repo demonstrates a production-style SaaS architecture with database-backed user flows, protected routes, Stripe billing, SendGrid/react-email templates, tRPC APIs, and Playwright end-to-end tests.
 
-**Database**: MySQL on Planetscale
+## Highlights
 
-**ORM**: Prisma
+- Next.js SaaS application with typed server/client boundaries
+- Prisma schema for database-backed product workflows
+- NextAuth authentication with Google OAuth support
+- tRPC and React Query for typed API access
+- Stripe billing integration
+- SendGrid and react-email transactional email templates
+- MDX/contentlayer documentation system
+- Playwright e2e tests and Vitest unit test setup
+- Sitemap generation and Vercel analytics integration
 
-**Auth**: [Next-Auth](https://next-auth.js.org/), Google OAuth
+## Tech Stack
 
-**Hosting**: Vercel
+- Next.js
+- TypeScript
+- Prisma
+- MySQL / PlanetScale-compatible database
+- NextAuth
+- tRPC
+- React Query
+- Stripe
+- SendGrid
+- react-email
+- Tailwind CSS
+- Contentlayer / MDX
+- Playwright
+- Vitest
 
-**Emails**: Sendgrid, react-email
+## Project Structure
 
-## General development
+```text
+src/
+  server/          API routers, auth, database, Stripe and server logic
+  components/      app components and setup UI
+  pages/           Next.js pages and routes
 
-Once all this is setup, for daily development, you'll only need to run two commands in two separate terminals:
-
+prisma/            database schema
+emails/            transactional email templates
+content/           documentation content
+e2e-tests/         Playwright test suite
 ```
+
+## Local Development
+
+```bash
+yarn install
+cp .env.example .env.local
+yarn prisma db push
 yarn dev
 ```
 
+Run tests:
+
+```bash
+yarn test
+yarn e2e-test
 ```
-pscale connect your-db-name your-db-branch-name --port 3309
-# ex: pscale connect kitchbook-db main --port 3309
-```
 
-When you change the schema in `schema.prisma`, you'll need to run `yarn prisma db push`. This will push your changes to your planetscale db.
+Run email preview:
 
-## Email developement
-
-If you want to work on the emails, run
-
-```
+```bash
 yarn dev-email
 ```
 
-## Code structure
+## Security
 
-Start exploring at `pages/index.tsx`. This is the home page and has an example on how you can call the backend to get a value from the database. Follow the code path in this line:
+Do not commit `.env.local`, database URLs, OAuth secrets, Stripe keys, SendGrid keys, or customer contract data.
 
-```
-const user = api.user.get.useQuery(undefined, { enabled: !!session });
-```
-
-Here, `api` refers to our tRPC API. `user` is a router defined in the `/routers` folder. `useQuery` is a `react-query` wrapper that tRPC provides.
-
-This `user.get` function is defined in `src/server/api/routers/user.ts`
-
-This is a basic example of how you can use Prisma to get values from your Planetscale DB. You'll notice in the frontend, the types are automatically inferred from the return value from Prisma. This DB <-> Frontend type integration is part of what makes this stack so slick.
-
-```
-  get: protectedProcedure.query(async ({ ctx }) => {
-    const user = await ctx.prisma.user.findUnique({
-      where: { id: ctx.session.user.id },
-    });
-
-    return user;
-  }),
-```
-
-See [this](https://create.t3.gg/en/folder-structure) for details on all the files (NOTE: we'll replace this with our own docs page).
-
-DB schema: `schema.prisma`
